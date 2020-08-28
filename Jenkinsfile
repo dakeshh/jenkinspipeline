@@ -16,7 +16,20 @@ pipeline{
                 echo "Deploying...."
                 build 'test'
             }
-            
+        }
+    }
+    post {
+        failure {
+            steps {
+                echo "Running Failure jenkins job ...."
+                build 'failure_test'
+            }
+        }
+        success {
+            steps {
+                echo "Running success jenkins job ...."
+                build 'success_test'
+            }
         }
     }
 }
