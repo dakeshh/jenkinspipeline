@@ -14,22 +14,21 @@ pipeline{
         stage("Deploy"){
             steps{
                 echo "Deploying...."
-                build 'test'
             }
         }
     }
     post {
+        always {
+            echo "Always running ...."
+            build 'test'
+        }
         failure {
-            steps {
-                echo "Running Failure jenkins job ...."
-                build 'failure_test'
-            }
+            echo "Running Failure jenkins job ...."
+            build 'failure_test'
         }
         success {
-            steps {
-                echo "Running success jenkins job ...."
-                build 'success_test'
-            }
+            echo "Running success jenkins job ...."
+            build 'success_test'
         }
     }
 }
