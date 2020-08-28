@@ -1,18 +1,23 @@
 pipeline{
     agent any
     stages{
-        stage("Build"){
-            steps{
+        stage("Build") {
+            steps {
                 echo "Building...."
             }
         }
-        stage("Test"){
-            steps{
+        stage("Test") {
+            when {
+                expression {
+                    env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'prod'
+                }
+            }
+            steps {
                 echo "Testing...."
             }
         }
-        stage("Deploy"){
-            steps{
+        stage("Deploy") {
+            steps {
                 echo "Deploying...."
             }
         }
