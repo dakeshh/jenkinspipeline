@@ -2,7 +2,6 @@ pipeline{
     agent any
     environment {
         VERSION = "2.0.7-release"
-        SERVER_CREDITIONAL = creditionals("dakeshh")
     }
     parameters {
         string(name: 'version1', defaultValue: '', description: "please provide input values ...")
