@@ -5,9 +5,9 @@ pipeline{
         SERVER_CREDITIONAL = creditionals("dakeshh")
     }
     parameters {
-        string(name: "version1", defaultvalue: '', description: "please provide input values ...")
-        choice(name: "version2", choices: ['1.0.1', '1.0.2', '1.0.3'], description: "please select version2")
-        booleanParam(name: "execteTest", defaultvalue: true, description: "please select wanna execture test or not")
+        string(name: 'version1', defaultvalue: '', description: "please provide input values ...")
+        choice(name: 'version2', choices: ['1.0.1', '1.0.2', '1.0.3'], description: "please select version2")
+        booleanParam(name: 'execteTest', defaultvalue: true, description: "please select wanna execture test or not")
     }
     stages{
         stage("Build") {
