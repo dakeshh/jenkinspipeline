@@ -1,3 +1,10 @@
+// Define a groovy local variable, myVar.
+// A global variable without the def, like myVar = 'initial_value',
+// was required for me in older versions of jenkins. Your mileage
+// may vary. Defining the variable here maybe adds a bit of clarity,
+// showing that it is intended to be used across multiple stages.
+def myVar = 'initial_value'
+
 pipeline{
     agent any
     environment {
@@ -35,6 +42,12 @@ pipeline{
                 echo "Deploying...."
                 echo "version1 =  ${version1}"
                 echo "version2 = ${version2}"
+            }
+        }
+        stage('Build_Main') {
+            steps {
+                sh 'make' 
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
             }
         }
         stage('Four') {
